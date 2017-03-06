@@ -2,20 +2,14 @@ import express from  'express';
 import config from './config/config';
 import datasource from './config/datasource'
 
+import booksRouter from './routes/books';
+
 const app = express();
 
 app.set('port', 4000);
 app.config = config;
 app.datasource = datasource(app);
 
-const Books = app.datasource.models.Books;
-
-app.route('/books')
-  .get((req, res) => {
-    Books.findAll({})
-      .then(result => res.json(result))
-      .catch(err => res.status(412));
-  })
-
+booksRouter(app);
 
 export default app;
