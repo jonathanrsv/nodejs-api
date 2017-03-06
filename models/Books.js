@@ -11,5 +11,5 @@ export default (sequelize, DataType) => {
       validate: {notEmpty:true}
     }
   });
-return Books;
+  return Books;
 }
